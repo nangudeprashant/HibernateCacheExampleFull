@@ -2,6 +2,9 @@ package com.javalive.hibernate;
 
 import java.util.List;
 
+import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -28,8 +31,10 @@ import com.javalive.entity.Employee;
  *         sound and reliable way to think of the query cache conceptually.
  */
 public class QueryCacheExample {
-
+	final static Logger logger = Logger.getLogger(QueryCacheExample.class);
 	public static void main(String[] args) {
+		BasicConfigurator.configure(); //enough for configuring log4j
+		Logger.getRootLogger().setLevel(Level.DEBUG); //changing log level
 		Session session = null;
 		Transaction transaction = null;
 		try {
